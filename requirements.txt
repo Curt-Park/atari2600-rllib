@@ -4,7 +4,7 @@ ray == 1.9.0
 ray[default]
 ray[rllib]
 gym == 0.21.0
-AutoRom
+AutoROM
 gym[atari]
 pyglet
 
