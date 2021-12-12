@@ -1,7 +1,7 @@
 """Train PPO with any Atari2600 env.
 
 Author: Jinwoo Park
-Email: jinwoo.park@makinarocks.ai
+Email: www.jwpark.co.kr@gmail.com
 """
 
 import argparse
@@ -80,6 +80,8 @@ if __name__ == "__main__":
     ray.init()
 
     # set configrations
+    # you can choose any RLlib algorithm that supports Descrete Actions:
+    # https://docs.ray.io/en/releases-1.9.0/rllib-algorithms.html
     config = {
         "env": args.env,
         "num_gpus": int(args.gpu),

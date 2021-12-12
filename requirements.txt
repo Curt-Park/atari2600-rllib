@@ -1,6 +1,6 @@
 # ML
 torch == 1.10.0
-ray == 1.8.0
+ray == 1.9.0
 ray[default]
 ray[rllib]
 gym == 0.21.0
