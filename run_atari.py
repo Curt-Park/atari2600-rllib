@@ -15,7 +15,7 @@ from ray.tune.logger import pretty_print
 
 
 def train(train_config: Dict[str, Any], n_iters: int) -> None:
-    """Train the agent."""
+    """Train the agent with n_iters iterations."""
     agent = ppo.PPOTrainer(config=train_config, env=train_config["env"])
     for _ in range(n_iters):
         result = agent.train()
@@ -25,7 +25,7 @@ def train(train_config: Dict[str, Any], n_iters: int) -> None:
 
 
 def evaluate(eval_config: Dict[str, Any], checkpoint_path: str, render: bool) -> None:
-    """Evaluate the agent."""
+    """Evaluate the agent with a single iteration."""
     agent = ppo.PPOTrainer(config=eval_config, env=eval_config["env"])
     agent.restore(checkpoint_path)
     print(f"Checkpoint loaded from {checkpoint_path}")
