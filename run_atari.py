@@ -30,21 +30,20 @@ def evaluate(eval_config: Dict[str, Any], checkpoint_path: str, render: bool) ->
     agent.restore(checkpoint_path)
     print(f"Checkpoint loaded from {checkpoint_path}")
 
-    render_mode = "human" if render else None
-    env = gym.make(eval_config["env"], render_mode=render_mode)
+    env = gym.make(eval_config["env"], render_mode="human" if render else None)
     env = wrap_deepmind(env)
     obs = env.reset()
     print(f"Created env for {eval_config['env']}")
 
     done = False
-    total_reward = 0.0
+    score = 0.0
     while not done:
         action = agent.compute_single_action(obs)
         obs, reward, done, _ = env.step(action)
-        total_reward += reward
+        score += reward
 
     env.close()
-    print(f"Evaluation score: {total_reward}")
+    print(f"Evaluation score: {score}")
 
 
 if __name__ == "__main__":
